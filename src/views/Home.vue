@@ -86,7 +86,6 @@
 
         <!-- 产品展示区域 -->
         <div class="products-display">
-
           <!-- 保鲜剂系列 -->
           <div v-if="activeCategory === 'preservative'" class="product-category" data-category="preservative">
             <h3 class="category-title">保鲜剂系列</h3>
@@ -198,16 +197,15 @@
                 <div class="contact-icon">📞</div>
                 <div class="contact-details">
                   <h4>联系电话</h4>
-                  <p>0411-8765-4321</p>
-                  <p>138-1234-5678（张经理）</p>
+                  <p>0411-87860966</p>
+                  <p>18640833143（李厂长）</p>
                 </div>
               </div>
               <div class="contact-item">
                 <div class="contact-icon">📧</div>
                 <div class="contact-details">
                   <h4>电子邮箱</h4>
-                  <p>info@duolianxi.com</p>
-                  <p>sales@duolianxi.com</p>
+                  <p>dorency-dl@163.com</p>
                 </div>
               </div>
               <div class="contact-item">
@@ -215,115 +213,32 @@
                 <div class="contact-details">
                   <h4>工作时间</h4>
                   <p>周一至周五：8:30-17:30</p>
-                  <p>周六：9:00-12:00</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- 地图位置 -->
-            <div class="map-section">
-              <h3>我们的位置</h3>
-              <div class="map-placeholder">
-                <div class="map-content">
-                  <div class="map-icon">🗺️</div>
-                  <p>大连市金州区地图位置</p>
-                  <small>实际部署时可嵌入百度地图或高德地图</small>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- 右侧：留言表单 -->
-          <div class="contact-form">
-            <div class="form-card">
-              <h3>在线留言</h3>
-              <p class="form-description">如有任何问题或需求，请填写以下表单，我们会尽快与您联系</p>
-              
-              <form @submit.prevent="submitContactForm" class="contact-form">
-                <div class="form-group">
-                  <label for="name">您的姓名 *</label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    v-model="contactForm.name" 
-                    placeholder="请输入您的姓名"
-                    required
-                  >
+          <!-- 右侧：地图位置 -->
+          <div class="map-section">
+            <div class="map-card">
+              <h3>我们的位置</h3>
+              <div class="map-container">
+                <div id="baidu-map" class="baidu-map"></div>
+                <div class="map-actions">
+                  <button class="map-btn" @click="openInBaiduMap">查看详细地图</button>
                 </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="phone">联系电话 *</label>
-                    <input 
-                      type="tel" 
-                      id="phone" 
-                      v-model="contactForm.phone" 
-                      placeholder="请输入联系电话"
-                      required
-                    >
-                  </div>
-                  <div class="form-group">
-                    <label for="email">电子邮箱</label>
-                    <input 
-                      type="email" 
-                      id="email" 
-                      v-model="contactForm.email" 
-                      placeholder="请输入电子邮箱"
-                    >
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="company">公司名称</label>
-                  <input 
-                    type="text" 
-                    id="company" 
-                    v-model="contactForm.company" 
-                    placeholder="请输入公司名称"
-                  >
-                </div>
-
-                <div class="form-group">
-                  <label for="product">感兴趣的产品</label>
-                  <select id="product" v-model="contactForm.product">
-                    <option value="">请选择感兴趣的产品</option>
-                    <option value="脱氧剂">脱氧剂系列</option>
-                    <option value="怀炉">怀炉系列</option>
-                    <option value="保鲜剂">保鲜剂</option>
-                    <option value="干燥剂">干燥剂</option>
-                    <option value="其他">其他产品</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="message">留言内容 *</label>
-                  <textarea 
-                    id="message" 
-                    v-model="contactForm.message" 
-                    placeholder="请详细描述您的需求或问题..."
-                    rows="5"
-                    required
-                  ></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">提交留言</button>
-              </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
     <!-- 页脚 -->
     <footer class="footer">
       <div class="container">
-        <!-- 版权信息 -->
-        <div class="footer-bottom">
-          <div class="footer-divider"></div>
-          <div class="copyright">
-            <p>&copy; 2024 大连多连喜保鲜剂有限公司 版权所有 | 辽ICP备12345678号</p>
-            <p>专业保鲜剂生产专家 - 为您提供优质的保鲜解决方案</p>
-          </div>
+        <div class="copyright">
+          <p>&copy; 2024 大连多连喜保鲜剂有限公司 版权所有 | 辽ICP备12345678号</p>
+          <p>专业保鲜剂生产专家 - 为您提供优质的保鲜解决方案</p>
         </div>
       </div>
     </footer>
@@ -440,15 +355,6 @@ export default {
           ],
         ]
       },
-      
-      contactForm: {
-        name: '',
-        phone: '',
-        email: '',
-        company: '',
-        product: '',
-        message: ''
-      },
 
       // 图片弹窗相关数据
       showImageGallery: false,
@@ -483,6 +389,7 @@ export default {
     // 初始化轮播位置
     this.$nextTick(() => {
       this.updateCarouselPosition();
+      this.initBaiduMap();
     });
   },
   beforeUnmount() {
@@ -501,10 +408,9 @@ export default {
       });
     },
     
-    // 轮播导航方法 - 直接跳转版本
+    // 轮播导航方法
     nextSlide(category) {
       if (category === 'warmer') {
-        // 直接计算下一个索引
         const nextIndex = (this.currentWarmerIndex + 1) % this.warmerProducts.length;
         this.currentWarmerIndex = nextIndex;
       } else {
@@ -512,15 +418,13 @@ export default {
         this.currentPreservativeIndex = nextIndex;
       }
       
-      // 直接跳转到新位置，不使用动画
       this.$nextTick(() => {
-        this.updateCarouselPosition(false); // 不启用平滑滚动
+        this.updateCarouselPosition(false);
       });
     },
     
     prevSlide(category) {
       if (category === 'warmer') {
-        // 直接计算上一个索引
         const prevIndex = this.currentWarmerIndex === 0 ? 
           this.warmerProducts.length - 1 : this.currentWarmerIndex - 1;
         this.currentWarmerIndex = prevIndex;
@@ -530,7 +434,6 @@ export default {
         this.currentPreservativeIndex = prevIndex;
       }
       
-      // 直接跳转到新位置
       this.$nextTick(() => {
         this.updateCarouselPosition(false);
       });
@@ -543,8 +446,6 @@ export default {
         ? this.$refs.warmerTrack 
         : this.$refs.preservativeTrack;
       
-
-      
       if (track) {
         const activeSlide = track.querySelector('.carousel-slide.active');
         if (activeSlide) {
@@ -552,12 +453,11 @@ export default {
           const slideWidth = activeSlide.offsetWidth;
           const slideLeft = activeSlide.offsetLeft;
           
-          // 计算居中的滚动位置
           const scrollPosition = slideLeft - (trackWidth / 2) + (slideWidth / 2);
           
           track.scrollTo({
             left: scrollPosition,
-            behavior: smooth ? 'smooth' : 'auto' // 使用 auto 实现直接跳转
+            behavior: smooth ? 'smooth' : 'auto'
           });
         }
       }
@@ -571,25 +471,10 @@ export default {
     },
 
     goToAboutDetail() {
-      // 立即跳转到顶部（无动画）
       window.scrollTo(0, 0);
       this.$router.push('/about-detail');
     },
-    submitContactForm() {
-      // 这里可以添加表单提交逻辑
-      console.log('表单数据:', this.contactForm);
-      alert('感谢您的留言，我们会尽快联系您！');
-      
-      // 重置表单
-      this.contactForm = {
-        name: '',
-        phone: '',
-        email: '',
-        company: '',
-        product: '',
-        message: ''
-      };
-    },
+
     handleScroll() {
       const navbar = document.querySelector('.navbar');
       if (window.scrollY > 50) {
@@ -598,12 +483,144 @@ export default {
         navbar.classList.remove('scrolled');
       }
     },
+
     openImageGallery(index = 0) {
       this.currentImageIndex = index
       this.showImageGallery = true
     },
+
     closeImageGallery() {
       this.showImageGallery = false
+    },
+    
+    // 初始化百度地图
+    initBaiduMap() {
+      // 检查百度地图API是否已加载
+      if (typeof BMap !== 'undefined') {
+        this.createMap();
+      } else {
+        // 动态加载百度地图API
+        this.loadBaiduMapAPI();
+      }
+    },
+
+    // 加载百度地图API
+    loadBaiduMapAPI() {
+      const script = document.createElement('script');
+      script.src = `https://api.map.baidu.com/api?v=3.0&ak=zRCYptW1eyy9eS2ptkRgOhEfX2pPDBhO&callback=initBaiduMap`;
+      document.head.appendChild(script);
+      
+      // 全局回调函数
+      window.initBaiduMap = () => {
+        this.createMap();
+      };
+    },
+
+    // 创建地图实例
+    createMap() {
+      try {
+        console.log('开始创建地图...');
+        
+        // 检查容器是否存在
+        const mapContainer = document.getElementById('baidu-map');
+        if (!mapContainer) {
+          console.error('地图容器未找到');
+          this.showStaticMapFallback();
+          return;
+        }
+
+        // 公司坐标（使用更精确的坐标）
+        const companyLng = 121.734822;
+        const companyLat = 39.162731;
+        
+        // 使用 window.BMap 避免 ESLint 报错
+        const BMap = window.BMap;
+        
+        if (!BMap) {
+          console.error('BMap 未定义');
+          this.showStaticMapFallback();
+          return;
+        }
+
+        console.log('BMap 已加载:', BMap);
+        
+        // 创建地图实例
+        this.map = new BMap.Map('baidu-map');
+        
+        // 创建坐标点
+        const point = new BMap.Point(companyLng, companyLat);
+        
+        // 初始化地图
+        this.map.centerAndZoom(point, 15);
+        console.log('地图初始化完成');
+        
+        // 添加标注
+        const marker = new BMap.Marker(point);
+        this.map.addOverlay(marker);
+        
+        // 添加信息窗口
+        const infoWindow = new BMap.InfoWindow(`
+          <div style="padding: 10px; max-width: 200px;">
+            <h4 style="margin: 0 0 8px 0; color: #2e7d32; font-size: 14px;">大连多连喜保鲜剂有限公司</h4>
+            <p style="margin: 0; font-size: 12px; color: #666; line-height: 1.4;">
+              辽宁省大连市金州区拥政街道九里村215-3号1层
+            </p>
+          </div>
+        `);
+        
+        marker.addEventListener('click', () => {
+          this.map.openInfoWindow(infoWindow, point);
+        });
+        
+        // 启用滚轮缩放
+        this.map.enableScrollWheelZoom(true);
+        
+        // 添加控件
+        this.map.addControl(new BMap.NavigationControl());
+        this.map.addControl(new BMap.ScaleControl());
+        this.map.addControl(new BMap.OverviewMapControl());
+        
+        // 添加地图类型控件
+        this.map.addControl(new BMap.MapTypeControl());
+        
+        console.log('地图创建完成');
+        
+      } catch (error) {
+        console.error('创建地图失败:', error);
+        this.showStaticMapFallback();
+      }
+    },
+
+    // 在百度地图中打开
+    openInBaiduMap() {
+      try {
+        const companyName = '大连多连喜保鲜剂有限公司';
+        const companyAddress = '辽宁省大连市金州区拥政街道九里村215-3号1层';
+        
+        // 正确的大连金州区坐标（近似值）
+        const lng = 121.734822;  // 经度
+        const lat = 39.162731;   // 纬度
+        
+        console.log('使用坐标:', lng, lat);
+        
+        // 使用百度地图坐标直接定位
+        const baiduUrl = `https://api.map.baidu.com/marker?location=${lat},${lng}&title=${encodeURIComponent(companyName)}&content=${encodeURIComponent(companyAddress)}&output=html&src=yourCompanyName`;
+        
+        console.log('打开百度地图:', baiduUrl);
+        window.open(baiduUrl, '_blank');
+        
+      } catch (error) {
+        console.error('打开地图失败:', error);
+        // 最简备用方案
+        const fallbackUrl = 'https://map.baidu.com/search/大连金州区九里村';
+        window.open(fallbackUrl, '_blank');
+      }
+    },
+    
+    // 获取路线（保持不变）
+    getDirections() {
+      const url = 'https://map.baidu.com/dir/大连多连喜保鲜剂有限公司/我的位置/?mode=driving&region=大连&output=html';
+      window.open(url, '_blank');
     }
   }
 }
@@ -629,16 +646,17 @@ body {
   padding: 0 20px;
 }
 
-/* 导航栏样式 - 绿色主题 */
+/* 导航栏样式 */
 .navbar {
-  background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
-  color: white;
-  padding: 1rem 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+  padding: 0.8rem 0;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(46, 125, 50, 0.2);
+  box-shadow: 0 2px 30px rgba(76, 175, 80, 0.15);
 }
 
 .nav-container {
@@ -647,42 +665,98 @@ body {
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 25px;
 }
 
-.logo h1 {
-  color: white;
-  font-size: 1.8rem;
-  margin-bottom: 0.2rem;
+.logo-container {
+  display: flex;
+  align-items: center;
 }
 
-.logo-subtitle {
-  color: #e8f5e9;
-  font-size: 0.9rem;
-  opacity: 0.9;
+.logo-main {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #f8fff8 0%, #ffffff 100%);
+  border: 2px solid #4CAF50;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+}
+
+.logo-main:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+  border-color: #2E7D32;
+}
+
+.logo-wrapper {
+  width: 65px;
+  height: 65px;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border: 2px solid #E8F5E9;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+}
+
+.logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.company-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.company-name {
+  color: #2E7D32;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.2rem 0;
+  line-height: 1.1;
+}
+
+.company-tagline {
+  color: #4CAF50;
+  font-size: 0.8rem;
+  margin: 0;
+  font-weight: 500;
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
-}
-
-.nav-menu li {
-  margin-left: 2rem;
+  gap: 2rem;
 }
 
 .nav-menu a {
-  color: white;
+  color: #2E7D32;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
   transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
 }
 
 .nav-menu a:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: #4CAF50;
+  color: white;
   transform: translateY(-2px);
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 2px 40px rgba(76, 175, 80, 0.2);
+  padding: 0.6rem 0;
 }
 
 /* 首页横幅 */
@@ -775,7 +849,6 @@ body {
   min-height: 500px;
 }
 
-/* 左侧详细信息 */
 .about-details {
   display: flex;
   flex-direction: column;
@@ -817,7 +890,6 @@ body {
   font-size: 1.2rem;
 }
 
-/* 右侧图片展示 */
 .about-visual {
   display: flex;
   flex-direction: column;
@@ -836,6 +908,12 @@ body {
   box-shadow: 0 15px 40px rgba(76, 175, 80, 0.25);
   height: 100%;
   min-height: 400px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.company-image:hover {
+  transform: translateY(-5px);
 }
 
 .main-image {
@@ -867,9 +945,9 @@ body {
 }
 
 .click-hint {
-  font-size: 1rem;
-  opacity: 0.9;
-  font-weight: 500;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 0.5rem;
 }
 
 /* 产品分类导航样式 */
@@ -904,28 +982,25 @@ body {
   box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
 }
 
-/* 怀炉分类按钮 - 浅温暖主题 */
+/* 怀炉分类按钮样式 */
 .category-btn[data-category="warmer"] {
-  border: 2px solid #FFB347; /* 日落橙 */
+  border: 2px solid #FFB347;
   background: white;
   color: #FFB347;
-  font-weight: 600;
 }
 
 .category-btn[data-category="warmer"]:hover {
-  background: #FFF5EE; /* 贝壳白 */
+  background: #FFF5EE;
   border-color: #FF9500;
-  transform: translateY(-2px);
 }
 
 .category-btn[data-category="warmer"].active {
-  background: linear-gradient(135deg, #FFB347, #FF9500); /* 日落渐变 */
+  background: linear-gradient(135deg, #FFB347, #FF9500);
   color: white;
   box-shadow: 0 4px 15px rgba(255, 179, 71, 0.4);
   border-color: #FF9500;
 }
 
-/* 产品分类标题 */
 .category-title {
   text-align: center;
   color: #2E7D32;
@@ -957,7 +1032,7 @@ body {
   display: flex;
   gap: 2rem;
   overflow-x: auto;
-  scroll-behavior: auto; /* 改为 auto 实现直接跳转 */
+  scroll-behavior: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding: 2rem 0;
@@ -1142,78 +1217,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* 响应式设计 */
-@media (max-width: 968px) {
-  .carousel-container {
-    padding: 0 50px;
-  }
-  
-  .carousel-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-  }
-  
-  .product-card {
-    width: 300px;
-    min-height: 400px;
-  }
-  
-  .product-image {
-    height: 200px;
-  }
-}
-
-@media (max-width: 768px) {
-  .carousel-container {
-    padding: 0 40px;
-  }
-  
-  .carousel-track {
-    gap: 1.5rem;
-  }
-  
-  .carousel-slide:not(.active) {
-    transform: scale(0.8);
-    opacity: 0.4;
-  }
-  
-  .product-card {
-    width: 280px;
-    min-height: 380px;
-  }
-  
-  .product-info {
-    padding: 1.5rem;
-  }
-  
-  .product-name {
-    font-size: 1.3rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .carousel-container {
-    padding: 0 30px;
-  }
-  
-  .carousel-btn {
-    width: 35px;
-    height: 35px;
-    font-size: 1rem;
-  }
-  
-  .product-card {
-    width: 250px;
-    min-height: 350px;
-  }
-  
-  .product-image {
-    height: 180px;
-  }
-}
-
-/* 怀炉产品卡片 - 温暖主题 */
+/* 怀炉产品卡片样式 */
 .product-category[data-category="warmer"] .product-card {
   box-shadow: 0 15px 40px rgba(255, 179, 71, 0.2);
   border-top: 4px solid #FFB347;
@@ -1226,7 +1230,7 @@ body {
 }
 
 .product-category[data-category="warmer"] .product-name {
-  color: #FF9500; /* 鲜橙色 */
+  color: #FF9500;
   font-weight: 700;
 }
 
@@ -1235,7 +1239,7 @@ body {
 }
 
 .product-category[data-category="warmer"] .feature-tag {
-  background: #FFE8D6; /* 浅橙背景 */
+  background: #FFE8D6;
   color: #FF9500;
   border: 1px solid #FFD1A4;
   font-weight: 500;
@@ -1248,7 +1252,6 @@ body {
   box-shadow: 0 3px 10px rgba(255, 179, 71, 0.3);
 }
 
-/* 怀炉轮播按钮 */
 .product-category[data-category="warmer"] .carousel-btn {
   border: 2px solid #FFB347;
   color: #FFB347;
@@ -1262,7 +1265,6 @@ body {
   transform: translateY(-50%) scale(1.1);
 }
 
-/* 怀炉分类标题 */
 .product-category[data-category="warmer"] .category-title {
   color: #FF9500;
   text-shadow: 0 2px 4px rgba(255, 179, 71, 0.2);
@@ -1273,7 +1275,6 @@ body {
   font-weight: 500;
 }
 
-/* 怀炉产品描述增强 */
 .product-category[data-category="warmer"] .product-desc {
   color: #666;
   background: linear-gradient(to right, #FFF5EE, transparent);
@@ -1281,9 +1282,9 @@ body {
   border-radius: 8px;
 }
 
-/* 激活状态的怀炉产品卡片特殊效果 */
-.product-category[data-category="warmer"] .carousel-slide.active .product-image {
-  position: relative;
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.5; }
 }
 
 .product-category[data-category="warmer"] .carousel-slide.active .product-image::before {
@@ -1300,11 +1301,7 @@ body {
   animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.5; }
-}
-
+/* 联系我们部分 */
 /* 联系我们部分 */
 .contact-section {
   padding: 100px 0;
@@ -1315,37 +1312,44 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  align-items: start;
+  align-items: stretch;
 }
 
-/* 联系信息样式 */
-.contact-info {
+.contact-info, .map-section {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 
-.contact-card {
+/* 统一卡片样式 */
+.contact-card, .map-card {
   background: white;
-  padding: 2.5rem;
+  padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(76, 175, 80, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
 }
 
-.contact-card h3 {
+/* 统一头部样式 */
+.contact-card h3, .map-card h3 {
   color: #2e7d32;
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
   text-align: center;
   border-bottom: 2px solid #e8f5e9;
-  padding-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
+/* 联系信息项目样式 */
 .contact-item {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  padding: 1.5rem 0;
+  gap: 0.8rem;
+  padding: 1rem 0;
   border-bottom: 1px solid #f5f5f5;
 }
 
@@ -1354,142 +1358,170 @@ body {
 }
 
 .contact-icon {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   background: #e8f5e9;
-  padding: 0.8rem;
+  padding: 0.6rem;
   border-radius: 50%;
-  min-width: 60px;
+  min-width: 50px;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .contact-details h4 {
   color: #2e7d32;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
 }
 
 .contact-details p {
   color: #666;
-  margin: 0.3rem 0;
-  line-height: 1.5;
+  margin: 0.2rem 0;
+  line-height: 1.4;
+  font-size: 0.9rem;
 }
 
 /* 地图样式 */
-.map-section {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.1);
-}
-
-.map-section h3 {
-  color: #2e7d32;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.map-placeholder {
-  background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
-  height: 200px;
+.static-map {
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  height: 280px;
   border-radius: 10px;
+  border: 2px solid #4caf50;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px dashed #4caf50;
-}
-
-.map-content {
-  text-align: center;
-  color: #2e7d32;
-}
-
-.map-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-/* 联系表单样式 */
-.contact-form {
-  height: 100%;
-}
-
-.form-card {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.1);
-  height: 100%;
-}
-
-.form-card h3 {
-  color: #2e7d32;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-.form-description {
-  color: #666;
-  text-align: center;
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #333;
-  font-weight: 500;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 12px 15px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 1rem;
   transition: all 0.3s ease;
-  background: #fafafa;
+  position: relative;
+  overflow: hidden;
+  flex: 1;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #4caf50;
-  background: white;
-  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+.static-map:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+  border-color: #2e7d32;
 }
 
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.map-image-placeholder {
+  text-align: center;
+  padding: 2rem;
+}
+
+.map-preview .map-icon {
+  font-size: 3rem;
+  margin-bottom: 0.8rem;
+}
+
+.map-preview h4 {
+  color: #2e7d32;
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.map-preview p {
+  color: #666;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+  font-size: 0.9rem;
+}
+
+.map-preview .click-hint {
+  background: #2e7d32;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.static-map:hover .click-hint {
+  background: #1b5e20;
+  transform: scale(1.05);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .contact-card, .map-card {
+    min-height: auto;
+    padding: 1.5rem;
+  }
+  
+  .static-map {
+    height: 250px;
+  }
+}
+
+/* 百度地图容器样式 */
+.baidu-map {
+  height: 300px;
+  border-radius: 10px;
+  border: 2px solid #4caf50;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .baidu-map {
+    height: 250px;
+  }
+}
+
+/* 地图操作按钮样式 */
+.map-actions {
+  display: flex;
   gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.submit-btn {
-  width: 100%;
+.map-btn {
+  padding: 12px 24px;
   background: linear-gradient(135deg, #4caf50, #2e7d32);
   color: white;
   border: none;
-  padding: 15px;
-  font-size: 1.1rem;
-  border-radius: 8px;
+  border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-size: 1rem;
   font-weight: 600;
+  flex: 1;
+  min-width: 140px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
 }
 
-.submit-btn:hover {
+.map-btn:hover {
   background: linear-gradient(135deg, #43a047, #1b5e20);
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+/* 调试按钮的特殊样式 */
+.map-btn[style*="background: #ff9800"] {
+  background: linear-gradient(135deg, #ff9800, #f57c00) !important;
+}
+
+.map-btn[style*="background: #ff9800"]:hover {
+  background: linear-gradient(135deg, #f57c00, #e65100) !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .map-actions {
+    flex-direction: column;
+  }
+  
+  .map-btn {
+    width: 100%;
+  }
 }
 
 /* 页脚样式 */
@@ -1497,88 +1529,6 @@ body {
   background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
   color: white;
   padding: 3rem 0 1rem;
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.footer-section h3 {
-  color: #a5d6a7;
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
-}
-
-.footer-section h4 {
-  color: #c8e6c9;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-}
-
-.footer-description {
-  color: #e8f5e9;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-link {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  transition: all 0.3s ease;
-}
-
-.social-link:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-}
-
-.footer-links {
-  list-style: none;
-}
-
-.footer-links li {
-  margin-bottom: 0.8rem;
-}
-
-.footer-links a {
-  color: #e8f5e9;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: white;
-  padding-left: 5px;
-}
-
-.footer-contact p {
-  color: #e8f5e9;
-  margin-bottom: 0.8rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* 页脚底部 */
-.footer-bottom {
-  margin-top: 2rem;
-}
-
-.footer-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-  margin-bottom: 1.5rem;
 }
 
 .copyright {
@@ -1589,122 +1539,6 @@ body {
 .copyright p {
   margin: 0.5rem 0;
   font-size: 0.9rem;
-}
-
-/* Logo样式 */
-.navbar {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(76, 175, 80, 0.2);
-  padding: 0.8rem 0;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 30px rgba(76, 175, 80, 0.15);
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 25px;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.logo-main {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  padding: 0.5rem 1.5rem;
-  border-radius: 16px;
-  transition: all 0.3s ease;
-  background: linear-gradient(135deg, #f8fff8 0%, #ffffff 100%);
-  border: 2px solid #4CAF50;
-  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
-}
-
-.logo-main:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
-  border-color: #2E7D32;
-}
-
-/* 白色背景的Logo容器 */
-.logo-wrapper {
-  width: 65px;
-  height: 65px;
-  background: white;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  border: 2px solid #E8F5E9;
-  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
-}
-
-.logo-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: none;
-}
-
-.company-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.company-name {
-  color: #2E7D32;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 0 0 0.2rem 0;
-  line-height: 1.1;
-}
-
-.company-tagline {
-  color: #4CAF50;
-  font-size: 0.8rem;
-  margin: 0;
-  font-weight: 500;
-}
-
-.nav-menu {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-}
-
-.nav-menu a {
-  color: #2E7D32;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 0.6rem 1.2rem;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-}
-
-.nav-menu a:hover {
-  background: #4CAF50;
-  color: white;
-  transform: translateY(-2px);
-}
-
-/* 滚动时导航栏效果 */
-.navbar.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(30px);
-  box-shadow: 0 2px 40px rgba(76, 175, 80, 0.2);
-  padding: 0.6rem 0;
 }
 
 /* 响应式设计 */
@@ -1733,13 +1567,9 @@ body {
     gap: 2rem;
   }
   
-  .footer-content {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-  
-  .form-row {
+  .about-content {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
 
@@ -1770,17 +1600,8 @@ body {
     font-size: 1.3rem;
   }
   
-  .footer-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  
-  .social-links {
-    justify-content: center;
-  }
-  
   .contact-card,
-  .form-card {
+  .certificates-card {
     padding: 1.5rem;
   }
   
@@ -1797,6 +1618,15 @@ body {
   .company-name {
     font-size: 1.2rem;
   }
+  
+  .map-actions {
+    flex-direction: column;
+  }
+  
+  .map-btn {
+    width: 100%;
+  }
+  
 }
 
 @media (max-width: 480px) {
@@ -1818,22 +1648,13 @@ body {
   .product-image {
     height: 180px;
   }
-}
-
-.click-hint {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  margin-top: 0.5rem;
-}
-
-.company-image,
-.image-card {
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.company-image:hover,
-.image-card:hover {
-  transform: translateY(-5px);
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.1rem;
+  }
 }
 </style>

@@ -33,6 +33,10 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
+    "globals": {
+      "BMap": "readonly",
+      "BMapGL": "readonly"
+    },
     "rules": {}
   },
   "browserslist": [
