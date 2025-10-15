@@ -102,12 +102,15 @@
                   v-for="(product, index) in preservativeProducts" 
                   :key="index"
                   :class="{ active: currentPreservativeIndex === index }"
-                  @click="currentPreservativeIndex === index && openProductGallery('preservative', index)"
                 >
                   <div class="product-card">
                     <div class="product-image">
                       <img :src="product.image" :alt="product.name" class="product-img">
-                      <div class="product-overlay" v-if="currentPreservativeIndex === index">
+                      <div 
+                        class="product-overlay" 
+                        v-if="currentPreservativeIndex === index"
+                        @click="openProductGallery('preservative', index)"
+                      >
                         <span class="view-more">查看详情</span>
                       </div>
                     </div>
@@ -146,12 +149,15 @@
                   v-for="(product, index) in warmerProducts" 
                   :key="index"
                   :class="{ active: currentWarmerIndex === index }"
-                  @click="currentWarmerIndex === index && openProductGallery('warmer', index)"
                 >
                   <div class="product-card">
                     <div class="product-image">
                       <img :src="product.image" :alt="product.name" class="product-img">
-                      <div class="product-overlay" v-if="currentWarmerIndex === index">
+                      <div 
+                        class="product-overlay" 
+                        v-if="currentWarmerIndex === index"
+                        @click="openProductGallery('warmer', index)"
+                      >
                         <span class="view-more">查看详情</span>
                       </div>
                     </div>
@@ -309,34 +315,63 @@ export default {
       
       preservativeProducts: [
         {
-          name: '高效脱氧剂',
-          description: '强力吸收氧气，有效防止食品氧化变质',
-          image: require('@/assets/IMG_6075.jpeg'),
-          features: ['高效脱氧', '安全无毒', '广泛适用']
+          name: '铁系自力反应型- C系',
+          description: '烘培咖啡豆、烘焙咖啡粉、地瓜干等氧气排出同时会产生二氧化碳的食品。',
+          image: require('@/assets/C系_咖啡豆.jpg'),
+          features: ['三层：PET/普通纸/PE', '三层耐油耐水：PET/耐水耐油纸/PE']
         },
         {
-          name: '耐油型脱氧剂',
-          description: '专为含油食品设计，在油脂环境中仍保持高效',
-          image: require('@/assets/IMG_6075.jpeg'),
-          features: ['耐油性强', '稳定性好', '专业配方']
+          name: '铁系自力反应型- SQ系',
+          description: '主要适用于绝大部分食品，如蛋糕、月饼、茶叶、海苔、等水分活性值处于中度和低度的食品。',
+          image: require('@/assets/SQ_点心.jpg'),
+          features: ['三层：PET/普通纸/PE', '三层耐油耐水：PET/耐水耐油纸/PE']
         },
         {
-          name: '快速吸氧剂',
-          description: '快速吸收氧气，适用于需要快速保鲜的食品',
-          image: require('@/assets/IMG_6075.jpeg'),
-          features: ['快速吸氧', '高效保鲜', '适用范围广']
+          name: '水份依存型﹣KWX系列',
+          description: '适用于面、糕点、凉粉、火腿、生海带等。适用于高水分活度食品。',
+          image: require('@/assets/KWX_火腿.jpg'),
+          features: ['两层：杜邦纸/PET+PE ']
         },
         {
-          name: '长效保鲜剂',
-          description: '长效保鲜效果，适用于需要长期保存的食品',
-          image: require('@/assets/IMG_6075.jpeg'),
-          features: ['长效保鲜', '稳定持久', '安全环保']
+          name: '低温自力反应型- QT系',
+          description: '冰皮月饼、鱼子酱、鹅肝, 以及在寒冷地区使用的食品。',
+          image: require('@/assets/QT_鱼子酱.jpg'),
+          features: ['三层耐油耐水：PET/耐水耐油纸/PE']
         },
         {
-          name: '专用型保鲜剂',
-          description: '针对特定食品研发的专业保鲜解决方案',
-          image: require('@/assets/IMG_6075.jpeg'),
-          features: ['专业配方', '针对性强', '效果显著']
+          name: '有机系脱氧剂﹣YC系',
+          description: '适用于绝大部分食品，如蛋糕、月饼、茶叶、罐装食品等设有金属检测器的生产线。',
+          image: require('@/assets/YC_罐装食品.jpg'),
+          features: ['三层耐油耐水：PET/耐水耐油纸/PE']
+        },
+        {
+          name: '有机系脱氧剂﹣YF系',
+          description: '适用于绝大部分食品，如蛋糕、月饼、茶叶、紫菜、坚果类、精密仪器等设有金属检测器的生产线。',
+          image: require('@/assets/YF_坚果.jpg'),
+          features: ['三层耐油耐水：PET/耐水耐油纸/PE']
+        },
+        {
+          name: '氧气指示剂﹣P系',
+          description: '当指示剂为红色时表示食品袋内处于无氧状态（氧气浓度在0.1%以下），当指示剂为蓝色时表示食品袋内还有氧气存在。单片型。粘贴于脱氧剂表面，配合脱氧剂一起工作。',
+          image: require('@/assets/P_宠物食品2.png')
+        },
+        {
+          name: '酒精保鲜剂﹣AG系',
+          description: '主要适用于麻薯类糕点，肉类加工食品，鱿鱼丝等干制海产品的防霉保鲜。',
+          image: require('@/assets/AG_鱿鱼丝.jpg'),
+          features: ['特殊材质']
+        },
+        {
+          name: '干燥剂﹣DS系',
+          description: '适用于航空部件、计算机器件、电子产品、皮革制品、医药、食品等行业的干燥防潮。',
+          image: require('@/assets/DS_皮革制品.jpg'),
+          features: ['双层：PET/PE']
+        },
+        {
+          name: '二氧化碳吸收剂﹣Z系',
+          description: '泡菜、蒜仁、栗子、等发酵食品。',
+          image: require('@/assets/Z_泡菜.jpg'),
+          features: ['单片型、以手工方式放入包装袋中。']
         }
       ],
       
@@ -350,8 +385,44 @@ export default {
         ],
         preservative: [
           [
-            { src: require('@/assets/IMG_6075.jpeg'), alt: '保鲜剂产品1-主图', title: '高效脱氧剂 - 包装' },
-            { src: require('@/assets/IMG_6075.jpeg'), alt: '保鲜剂产品1-使用', title: '高效脱氧剂 - 使用效果' }
+            { src: require('@/assets/C系_咖啡豆.jpg'), alt: '使用场景', title: '使用场景' },
+            { src: require('@/assets/IMG_6026.jpeg'), alt: '产品图', title: '产品图' }
+          ],
+          [
+            { src: require('@/assets/SQ_点心.jpg'), alt: '使用场景', title: '使用场景' },
+            { src: require('@/assets/IMG_6027.jpeg'), alt: '产品图', title: '产品图' }
+          ],
+          [
+            { src: require('@/assets/KWX_火腿.jpg'), alt: '使用场景', title: '使用场景' },
+            { src: require('@/assets/IMG_6016.jpeg'), alt: '产品图', title: '产品图' }
+          ],
+          [
+            { src: require('@/assets/QT_鱼子酱.jpg'), alt: '使用场景', title: '使用场景' },
+            { src: require('@/assets/IMG_6023.jpeg'), alt: '产品图', title: '产品图' }
+          ],
+          [
+            { src: require('@/assets/YC_罐装食品.jpg'), alt: '使用场景', title: '使用场景' },
+            { src: require('@/assets/IMG_6019.jpeg'), alt: '产品图', title: '产品图' }
+          ],
+          [
+            { src: require('@/assets/YF_坚果.jpg'), alt: '使用场景', title: '使用场景' },
+            { src: require('@/assets/IMG_6017.jpeg'), alt: '产品图', title: '产品图' }
+          ],
+          [
+            { src: require('@/assets/P_宠物食品2.png'), alt: '使用场景', title: '使用场景' },
+            { src: require('@/assets/IMG_6018.jpeg'), alt: '产品图', title: '产品图' }
+          ],
+          [
+            { src: require('@/assets/AG_鱿鱼丝.jpg'), alt: '使用场景', title: '使用场景' },
+            { src: require('@/assets/IMG_6024.jpeg'), alt: '产品图', title: '产品图' }
+          ],
+          [
+            { src: require('@/assets/DS_皮革制品.jpg'), alt: '使用场景', title: '使用场景' },
+            { src: require('@/assets/IMG_6075.jpeg'), alt: '产品图', title: '产品图' }
+          ],
+          [
+            { src: require('@/assets/Z_泡菜.jpg'), alt: '使用场景', title: '使用场景' },
+            { src: require('@/assets/IMG_6025.jpeg'), alt: '产品图', title: '产品图' }
           ],
         ]
       },
@@ -1112,6 +1183,13 @@ body {
   min-height: 450px;
   display: flex;
   flex-direction: column;
+  cursor: default; /* 整个卡片默认不可点击 */
+}
+
+/* 只有激活状态的卡片覆盖层可点击 */
+.carousel-slide.active .product-overlay {
+  opacity: 1;
+  cursor: pointer; /* 覆盖层可点击 */
 }
 
 .carousel-slide.active .product-card {
@@ -1177,7 +1255,9 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
+  cursor: default; /* 信息区域不可点击 */
 }
+
 
 .product-name {
   color: #2e7d32;
@@ -1209,12 +1289,18 @@ body {
   font-size: 0.9rem;
   border: 1px solid #c8e6c9;
   transition: all 0.3s ease;
+  cursor: default; /* 特征标签不可点击 */
 }
 
 .feature-tag:hover {
   background: #4caf50;
   color: white;
   transform: translateY(-2px);
+}
+
+/* 怀炉系列的相应调整 */
+.product-category[data-category="warmer"] .carousel-slide:not(.active) {
+  pointer-events: none;
 }
 
 /* 怀炉产品卡片样式 */
@@ -1583,8 +1669,11 @@ body {
   }
   
   .carousel-slide:not(.active) {
-    transform: scale(0.8);
-    opacity: 0.4;
+    transform: scale(0.85);
+    opacity: 0.6;
+    filter: blur(1px);
+    cursor: default;
+    pointer-events: none; /* 阻止所有点击事件 */
   }
   
   .product-card {
