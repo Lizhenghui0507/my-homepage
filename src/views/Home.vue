@@ -135,7 +135,7 @@
 
           <!-- 怀炉系列 -->
           <div v-if="activeCategory === 'warmer'" class="product-category" data-category="warmer">
-            <h3 class="category-title">暖宝宝系列</h3>
+            <h3 class="category-title">暖贴系列</h3>
             <p class="category-description">专业保暖产品，为您提供持久的温暖体验</p>
             
             <div class="carousel-container">
@@ -239,6 +239,7 @@
         </div>
       </div>
     </section>
+
     <!-- 页脚 -->
     <footer class="footer">
       <div class="container">
@@ -271,7 +272,7 @@ export default {
       // 产品分类数据
       productCategories: [
         { id: 'preservative', name: '保鲜剂系列' },
-        { id: 'warmer', name: '怀炉系列' }
+        { id: 'warmer', name: '暖贴系列' }
       ],
       activeCategory: 'preservative',
 
