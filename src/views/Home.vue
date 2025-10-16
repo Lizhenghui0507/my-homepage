@@ -135,7 +135,7 @@
 
           <!-- 怀炉系列 -->
           <div v-if="activeCategory === 'warmer'" class="product-category" data-category="warmer">
-            <h3 class="category-title">怀炉系列</h3>
+            <h3 class="category-title">暖宝宝系列</h3>
             <p class="category-description">专业保暖产品，为您提供持久的温暖体验</p>
             
             <div class="carousel-container">
@@ -282,34 +282,28 @@ export default {
       // 产品数据
       warmerProducts: [
         {
-          name: '经典款怀炉',
-          description: '采用优质材料，发热持久稳定，安全可靠',
-          image: require('@/assets/IMG_6075.jpeg'),
-          features: ['持久发热', '安全环保', '便携设计']
+          name: '普通粘贴型',
+          description: '快速升温，持续保暖，优选材质，多层控温',
+          image: require('@/assets/暖贴-10.png'),
+          features: ['尺寸:87mm*110mm', '持续时间 (40˚c 以上):10小时', '最高温度/平均温度:63/52˚c']
         },
         {
-          name: '便携式怀炉',
-          description: '小巧轻便，适合随身携带，随时随地享受温暖',
-          image: require('@/assets/IMG_6075.jpeg'),
-          features: ['小巧便携', '快速发热', '节能环保']
+          name: '迷你粘贴型',
+          description: '快速升温，持续保暖，优选材质，多层控温',
+          image: require('@/assets/暖贴-8-1.png'),
+          features: ['尺寸:70mm*95mm', '持续时间 (40˚c 以上):8小时', '最高温度/平均温度:63/52˚c']
         },
         {
-          name: '智能温控怀炉',
-          description: '智能温度控制，多档调节，满足不同需求',
-          image: require('@/assets/IMG_6075.jpeg'),
-          features: ['智能温控', '多档调节', '长效续航']
+          name: '普通携带型',
+          description: '快速升温，持续保暖，优选材质，多层控温',
+          image: require('@/assets/暖贴-16.png'),
+          features: ['尺寸:82mm*105mm', '持续时间 (40˚c 以上):16小时', '最高温度/平均温度:70/56˚c']
         },
         {
-          name: '大容量怀炉',
-          description: '超大容量设计，满足长时间使用需求',
-          image: require('@/assets/IMG_6075.jpeg'),
-          features: ['大容量', '持久保温', '安全可靠']
-        },
-        {
-          name: '迷你怀炉',
-          description: '超迷你设计，适合女性用户随身携带',
-          image: require('@/assets/IMG_6075.jpeg'),
-          features: ['超迷你', '时尚设计', '轻便携带']
+          name: '迷你携带型',
+          description: '快速升温，持续保暖，优选材质，多层控温',
+          image: require('@/assets/暖贴-8-2.png'),
+          features: ['尺寸:60mm*90mm', '持续时间 (40˚c 以上):8小时', '最高温度/平均温度:70/58˚c']
         }
       ],
       
@@ -379,9 +373,21 @@ export default {
       productGalleries: {
         warmer: [
           [
-            { src: require('@/assets/IMG_6075.jpeg'), alt: '怀炉产品1-主图', title: '经典款怀炉 - 正面' },
-            { src: require('@/assets/IMG_6075.jpeg'), alt: '怀炉产品1-细节', title: '经典款怀炉 - 细节' }
+            { src: require('@/assets/暖贴-10.png'), alt: '暖贴产品-主图', title: '普通粘贴型 - 正面' },
+            { src: require('@/assets/暖贴-10.png'), alt: '暖贴产品-细节', title: '普通粘贴型 - 背面' }
           ],
+          [
+            { src: require('@/assets/暖贴-8-1.png'), alt: '暖贴产品-主图', title: '迷你粘贴型 - 正面' },
+            { src: require('@/assets/暖贴-8-1.png'), alt: '暖贴产品-细节', title: '迷你粘贴型 - 背面' }
+          ],
+          [
+            { src: require('@/assets/暖贴-16.png'), alt: '暖贴产品-主图', title: '普通携带型 - 正面' },
+            { src: require('@/assets/暖贴-16.png'), alt: '暖贴产品-细节', title: '普通携带型 - 背面' }
+          ],
+          [
+            { src: require('@/assets/暖贴-8-2.png'), alt: '暖贴产品-主图', title: '迷你携带型 - 正面' },
+            { src: require('@/assets/暖贴-8-2.png'), alt: '暖贴产品-细节', title: '迷你携带型 - 背面' }
+          ]
         ],
         preservative: [
           [
