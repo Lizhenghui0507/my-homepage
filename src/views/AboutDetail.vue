@@ -120,7 +120,7 @@
                       <img src="@/assets/company-building.jpg" alt="本社工场" class="factory-img">
                     </div>
                     <div class="factory-info">
-                      <h4>本社工場／益寄島工場</h4>
+                      <h4>本社工場</h4>
                       <p class="factory-subtitle">Head Office Factory / Masuyorishima Factory</p>
                       <p class="factory-address">📍 岡山県浅口市鴨方町六条院西2320番地</p>
                       <p class="factory-desc">总部生产基地，集研发、生产于一体</p>
@@ -132,7 +132,7 @@
                       <img src="@/assets/company-building.jpg" alt="寄島工場" class="factory-img">
                     </div>
                     <div class="factory-info">
-                      <h4>本社工場／益寄島工場</h4>
+                      <h4>益寄島工場</h4>
                       <p class="factory-subtitle">Head Office Factory / Masuyorishima Factory</p>
                       <p class="factory-address">📍 岡山県浅口市寄島町12155番地142</p>
                       <p class="factory-desc">总部生产基地，集研发、生产于一体</p>
